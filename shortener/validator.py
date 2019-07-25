@@ -4,10 +4,12 @@ from django.core.exceptions import ValidationError
 def clean_url(value):
     urlv = URLValidator()
     try:
-        if 'http://' or 'https://' not in value:
+        if 'http' not in str(value):
             value = 'http://' + str(value)
             urlv(value)
-        elif 'http://' or 'https://' in value:
+            return value
+        else:
+            print('done')
             urlv(value)
     except:
         raise ValidationError('Use a real URL')
