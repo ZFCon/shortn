@@ -1,0 +1,1 @@
+web: gunicorn shortn.wsgi --log-file -
