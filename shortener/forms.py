@@ -3,4 +3,12 @@ from django.core.validators import URLValidator
 from .validator import clean_url
 
 class ShortnForms(forms.Form):
-    url = forms.CharField(label = 'submet url', validators = [clean_url])
+    error_css_class = 'error'
+    url = forms.CharField(label = '', validators = [clean_url], widget = forms.TextInput(
+        attrs ={
+            'class': "form-control",
+            'type': "text",
+            'placeholder': "Search",
+            'aria-label': "Search"
+        }
+    ))

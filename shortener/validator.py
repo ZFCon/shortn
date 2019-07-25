@@ -9,8 +9,7 @@ def clean_url(value):
             urlv(value)
             return value
         else:
-            print('done')
             urlv(value)
     except:
-        raise ValidationError('Use a real URL')
+        raise ValidationError("Use a real URL")
     return value

@@ -7,7 +7,7 @@ from .forms import ShortnForms
 # Create your views here.
 class HomeView(View):
     def get(self, request, *args, **kwargs):
-        form = ShortnForms(request.POST)
+        form = ShortnForms()
         context = {'form': form}
         return render(request ,'shortener/home.html', context)
     def post(self, request, *args, **kwargs):
@@ -21,10 +21,12 @@ class HomeView(View):
             obj, created = ShortnURL.objects.get_or_create(url = new_url)
             if created:
                 template = 'shortener/success.html'
+                context['shortcode'] = get_short_code
                 context['url'] = new_url
                 pass
             else:
                 context['url'] = new_url
+                context['shortcode'] = obj.get_short_code
                 template = 'shortener/exists.html'
                 pass
         return render(request, template, context)            

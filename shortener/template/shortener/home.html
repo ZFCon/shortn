@@ -1,15 +1,20 @@
-<html>
-    <body>
-        <head>
-            <title>Home</title>
-        </head>
-            <center>
-                <h2>Search</h2>
-                <form method="POST" action=".">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="Shorten">
-                </form>
-            </center>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<h2>Shortn</h2>
+<form method="POST" action=".">
+        <div class="md-form">
+            {% csrf_token %}
+
+            {%for field in form %}
+            <p class='text-danger'>
+            {%if field.errors %}
+            {{ field.errors.as_text }}
+            {%endif%}
+            </p>
+            {{ field }}
+            {% endfor %}
+
+        </div>
+        <button type="submit" class="btn btn-rounded mr" style="color: black; padding: 5px 30px;margin-top: 5px; ">Search</button>
+</form>
+{% endblock content %}
