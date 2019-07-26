@@ -21,4 +21,4 @@ class ShortnURL(models.Model):
         self.short_code = create_code(self)
         super(ShortnURL, self).save(*args, **kwargs)
     def get_short_code(self):
-        return 'http://127.0.0.1:8000/' + self.short_code
+        return 'https://demo-shortn.herokuapp.com/' + self.short_code
