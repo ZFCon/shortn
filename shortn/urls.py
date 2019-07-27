@@ -19,6 +19,7 @@ from shortener.views import URL_Redirect, HomeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('', HomeView.as_view()),
     path('<slug:SC>', URL_Redirect.as_view(), name='SCode'),
 ]
